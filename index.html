@@ -1000,7 +1000,7 @@
 
     // Check saved theme preference or system preference
     const savedTheme = localStorage.getItem("theme");
-    const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+    const prefersDark = 0;
 
     if (savedTheme === "dark" || (!savedTheme && prefersDark)) {
         document.body.classList.add("dark-theme");

@@ -61,10 +61,145 @@
   <link rel="icon" type="image/png" sizes="96x96" href="/assets/img/favicon/favicon-96x96.png" />
   <link rel="icon" type="image/png" sizes="16x16" href="/assets/img/favicon/favicon-16x16.png" />
   <link rel="manifest" href="/assets/img/favicon/manifest.json" />
-  <meta name="msapplication-TileColor" content="#ffffff" />
+  <meta name="msapplication-TileColor" content="#14213d" />
   <meta name="msapplication-TileImage" content="/assets/img/favicon/ms-icon-144x144.png" />
-  <meta name="theme-color" content="#ffffff" />
+  <meta name="theme-color" content="#14213d" />
   <meta name="robots" content="index, follow" />
+
+  <!-- Custom Theme Override: Navy + Cherry Blossom Pink -->
+  <style>
+    :root {
+      --navy-900: #0a1633;   /* darkest navy - max-contrast text/backgrounds */
+      --navy-800: #14213d;   /* primary navy - bands, buttons, nav highlights */
+      --navy-700: #1e2f57;   /* lighter navy - hover states */
+      --sakura-100: #ffe4ea; /* pale cherry blossom - subtle tints */
+      --sakura-300: #ffb7c5; /* classic cherry blossom pink - accents, glows */
+      --sakura-600: #c2185b; /* deep cherry pink - safe contrast for text/links */
+      --sakura-700: #a01650; /* deep pink hover */
+      --ivory: #fdfbfa;
+    }
+
+    body { background-color: var(--ivory); }
+
+    /* ---- Section title bands (About / Experience / Skills / etc.) ---- */
+    .page-title.teal,
+    h3.teal {
+      background-color: var(--navy-800) !important;
+      color: #fff !important;
+    }
+
+    /* ---- Generic teal background utility (fallback) ---- */
+    .teal:not(.page-title) {
+      background-color: var(--navy-800) !important;
+    }
+
+    /* Hero name highlight - reads as colored text, not a solid box */
+    .caption h2 .teal {
+      background: none !important;
+      color: var(--sakura-300) !important;
+      text-shadow: 0 1px 6px rgba(10, 22, 51, 0.6);
+    }
+    .caption h2,
+    .caption h5 {
+      color: #fff !important;
+    }
+
+    /* ---- Links / icon text (nav links, card titles) ---- */
+    .teal-text,
+    .grey-blue-text {
+      color: var(--navy-800) !important;
+    }
+    a.teal-text:hover,
+    .teal-text:hover {
+      color: var(--sakura-600) !important;
+    }
+
+    /* Side-nav on dark background stays readable */
+    .side-nav .teal-text,
+    #slide-out .teal-text,
+    nav .name-title .teal-text {
+      color: var(--navy-800) !important;
+    }
+
+    /* ---- Role titles / locations (accent text, contrast-checked) ---- */
+    .brown-text {
+      color: var(--sakura-600) !important;
+    }
+
+    /* ---- Contact / floating icon buttons ---- */
+    .blue-grey {
+      background-color: var(--sakura-600) !important;
+    }
+    .blue-grey i,
+    .blue-grey .fa {
+      color: #fff !important;
+    }
+    .blue-grey:hover {
+      background-color: var(--sakura-700) !important;
+    }
+
+    /* ---- Hero overlay tint ---- */
+    .overlay {
+      background: linear-gradient(135deg, rgba(10, 22, 51, 0.85), rgba(10, 22, 51, 0.55)) !important;
+    }
+
+    /* ---- Hero social + CTA buttons (styled defensively in case
+       /assets/css/style.css does not load in this environment) ---- */
+    .icon-btn {
+      background-color: var(--navy-800);
+      color: #fff;
+      border-radius: 50%;
+      width: 44px;
+      height: 44px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border: none;
+      margin-right: 8px;
+      transition: background-color 0.2s ease;
+    }
+    .icon-btn:hover {
+      background-color: var(--sakura-600);
+    }
+    .buttons .readme,
+    .buttons .contactme {
+      display: inline-block;
+      padding: 10px 22px;
+      border-radius: 24px;
+      margin-right: 10px;
+      margin-top: 12px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.2s ease;
+    }
+    .buttons .readme {
+      background-color: transparent;
+      color: #fff;
+      border: 2px solid var(--sakura-300);
+    }
+    .buttons .readme:hover {
+      background-color: var(--sakura-300);
+      color: var(--navy-900);
+    }
+    .buttons .contactme {
+      background-color: var(--sakura-600);
+      color: #fff;
+      border: 2px solid var(--sakura-600);
+    }
+    .buttons .contactme:hover {
+      background-color: var(--sakura-700);
+      border-color: var(--sakura-700);
+    }
+
+    /* ---- Cards: soft cherry-blossom edge against navy titles ---- */
+    .card {
+      border-top: 3px solid var(--sakura-300);
+    }
+
+    /* ---- Misc text ---- */
+    .black-text { color: var(--navy-900) !important; }
+    a.hoverline:hover { color: var(--sakura-600) !important; }
+  </style>
 </head>
 
 <body>
@@ -179,7 +314,7 @@
           <div class="content section-padding valign" style="margin-left: 10%; margin-top: 50px;">
             <div class="caption">
               <h2>Hi, I'm <span class="teal">Vhea He.</span></h2>
-              <h5 style="color:#fff">> <span class="typing" style="font-weight: 300; color:#004d40"></span></h5>
+              <h5 style="color:#fff">> <span class="typing" style="font-weight: 300; color:#ffd6e0"></span></h5>
               <h5>Self-driven engineering science student with a passion for silicon validation, robotics, and machine learning, who enjoys solving complex and challenging real-world problems.</h5>
             </div>
             <div class="social">

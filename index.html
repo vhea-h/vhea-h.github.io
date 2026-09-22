@@ -199,6 +199,56 @@
     /* ---- Misc text ---- */
     .black-text { color: var(--navy-900) !important; }
     a.hoverline:hover { color: var(--sakura-600) !important; }
+    /* ---- Dark Mode Overrides ---- */
+    body.dark-theme {
+    background-color: #121212 !important;
+    color: #e0e0e0 !important;
+    }
+
+    body.dark-theme .card,
+    body.dark-theme .side-nav {
+    background-color: #1e1e1e !important;
+    color: #e0e0e0 !important;
+    }
+
+    body.dark-theme .card .card-content,
+    body.dark-theme .card .card-content p,
+    body.dark-theme .card .card-action,
+    body.dark-theme .flow-text,
+    body.dark-theme .black-text {
+    color: #e0e0e0 !important;
+    }
+
+    body.dark-theme .teal-text,
+    body.dark-theme a.teal-text {
+    color: var(--sakura-300) !important;
+    }
+
+    /* Style for the theme toggle button in the sidebar */
+    .theme-toggle-container {
+    padding: 10px 16px;
+    display: flex;
+    align-items: center;
+    }
+
+    .theme-toggle-btn {
+    background: transparent;
+    border: 1px solid var(--navy-800);
+    color: var(--navy-800);
+    padding: 6px 12px;
+    border-radius: 16px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    transition: all 0.2s ease;
+    }
+
+    body.dark-theme .theme-toggle-btn {
+    border-color: var(--sakura-300);
+    color: var(--sakura-300);
+    }
   </style>
 </head>
 
@@ -252,6 +302,15 @@
         <a aria-label="Navigate to the Contact section" href="#contact" class="waves-effect waves-dark teal-text"><i
             class="mdi-content-mail small"></i><span>Contact</span></a>
       </li>
+
+      <li class="bold">
+        <div class="theme-toggle-container">
+            <button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle dark mode">
+            <i class="fa fa-moon-o"></i>
+            <span id="theme-toggle-text">Dark Mode</span>
+            </button>
+        </div>
+        </li>
 
       <li class="bold">
         <a aria-label="Open Vhea's resume in a new tab" href="/assets/resume/Vhea_He_Resume.pdf" target="_blank"
@@ -892,6 +951,41 @@
 
         // 5. Add event listener to Load More button
         document.getElementById("load-more-btn").addEventListener("click", renderProjects);
+    });
+
+    // Dark Mode Toggle Logic
+    document.addEventListener("DOMContentLoaded", () => {
+    const toggleBtn = document.getElementById("theme-toggle");
+    const toggleText = document.getElementById("theme-toggle-text");
+    const toggleIcon = toggleBtn ? toggleBtn.querySelector("i") : null;
+
+    // Check saved theme preference or system preference
+    const savedTheme = localStorage.getItem("theme");
+    const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+
+    if (savedTheme === "dark" || (!savedTheme && prefersDark)) {
+        document.body.classList.add("dark-theme");
+        updateToggleUI(true);
+    }
+
+    if (toggleBtn) {
+        toggleBtn.addEventListener("click", () => {
+        const isDark = document.body.classList.toggle("dark-theme");
+        localStorage.setItem("theme", isDark ? "dark" : "light");
+        updateToggleUI(isDark);
+        });
+    }
+
+    function updateToggleUI(isDark) {
+        if (!toggleText || !toggleIcon) return;
+        if (isDark) {
+        toggleText.textContent = "Light Mode";
+        toggleIcon.className = "fa fa-sun-o";
+        } else {
+        toggleText.textContent = "Dark Mode";
+        toggleIcon.className = "fa fa-moon-o";
+        }
+    }
     });
     </script>
 </body>

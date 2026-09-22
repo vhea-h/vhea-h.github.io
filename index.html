@@ -544,137 +544,18 @@
 
     <!-- Fourth Section: Projects -->
     <section id="projects" class="section scrollspy">
-      <h3 class="page-title white-text teal">Projects</h3>
-      <div class="container">
-        <div class="row">
+    <h3 class="page-title white-text teal">Projects</h3>
+    <div class="container">
+        <!-- Unique container for displaying projects dynamically -->
+        <div id="projects-container" class="row"></div>
 
-          <!-- ARES-CAN -->
-          <div class="col s12 m6 l4">
-            <div class="card medium">
-              <div class="card-content">
-                <span class="card-title teal-text hoverline">ARES-CAN Library</span>
-                <p>
-                  A custom CAN library written in Python and C++ enabling complex communications between science subsystems on a Mars rover.
-                </p>
-              </div>
-              <div class="card-reveal">
-                <span class="card-title grey-text"><small>Accomplishments</small><i
-                    class="mdi-navigation-close right"></i></span>
-                <ul>
-                  <li><b>Tools:</b> Python, C++, ROS2, CAN</li>
-                  <li>Facilitated Raspberry Pi to Ground Station communications for the rover.</li>
-                  <li>Extended to send contiguous data blocks up to 65 kB from Arduino Nano to Raspberry Pi for spectrometer pixel data.</li>
-                  <li>Used to transmit data between Arduinos and an STM32G4 for internal communication prototyping.</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-
-          <!-- GPS Software -->
-          <div class="col s12 m6 l4">
-            <div class="card medium">
-              <div class="card-content">
-                <span class="card-title teal-text hoverline">CANSAT GPS Software</span>
-                <p>
-                  GPS and data-processing software for a miniature satellite built for the ESA CanSat 2022 international design competition.
-                </p>
-              </div>
-              <div class="card-reveal">
-                <span class="card-title grey-text"><small>Accomplishments</small><i
-                    class="mdi-navigation-close right"></i></span>
-                <ul>
-                  <li><b>Tools:</b> C++</li>
-                  <li>GPS functioned to 1 meter accuracy allowing for successful payload retrieval.</li>
-                  <li>Best Final Report & Canadian Rep at ESA International CanSat Design Competition.</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-
-          <!-- ML Genetic Mutation Predictor -->
-          <div class="col s12 m6 l4">
-            <div class="card medium">
-              <div class="card-content">
-                <span class="card-title teal-text hoverline">Genetic Mutation Predictor</span>
-                <p>
-                  A machine learning model built at the Toronto Bioinformatics Hackathon that predicts potential disease-causing genetic mutations.
-                </p>
-              </div>
-              <div class="card-reveal">
-                <span class="card-title grey-text"><small>Accomplishments</small><i
-                    class="mdi-navigation-close right"></i></span>
-                <ul>
-                  <li><b>Tools:</b> Python, Scikit-learn</li>
-                  <li>Combined Borzoi and Random Forest models for the machine learning component.</li>
-                  <li>Found patterns relating gene sequences to female Alzheimer's patients.</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-
-          <!-- Speech Disfluency Research -->
-          <div class="col s12 m6 l4">
-            <div class="card medium">
-              <div class="card-content">
-                <span class="card-title teal-text hoverline">Speech Disfluency Research</span>
-                <p>
-                  Reinforcement-learning-based system for adjusting medication to minimize speech disfluency, with Professor Michael Guerzhoy's team.
-                </p>
-              </div>
-              <div class="card-reveal">
-                <span class="card-title grey-text"><small>Accomplishments</small><i
-                    class="mdi-navigation-close right"></i></span>
-                <ul>
-                  <li>Reviewed scholarly articles and publications, contributed to data collection.</li>
-                  <li>Organized research team's dataset and background information.</li>
-                  <li>Co-authored resulting publication.</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-
-          <!-- OEC Laser Removal -->
-          <div class="col s12 m6 l4">
-            <div class="card medium">
-              <div class="card-content">
-                <span class="card-title teal-text hoverline">LEO Debris Laser Removal System</span>
-                <p>
-                  A laser removal system concept for Low Earth Orbit space junk, designed for the Ontario Engineering Competition.
-                </p>
-              </div>
-              <div class="card-reveal">
-                <span class="card-title grey-text"><small>Accomplishments</small><i
-                    class="mdi-navigation-close right"></i></span>
-                <ul>
-                  <li>Followed engineering consulting protocol; produced full proposal, report, and presentation within one day.</li>
-                  <li>Best Consulting Team at UofT Engineering Competition (UTEK) and UofT Reps at OEC.</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-
-          <!-- Vaccine Distribution -->
-          <div class="col s12 m6 l4">
-            <div class="card medium">
-              <div class="card-content">
-                <span class="card-title teal-text hoverline">Vaccine Distribution System</span>
-                <p>
-                  A smart booking and vaccine distribution system designed to help tackle vaccine expiration and shortages in Sao Paulo, Brazil.
-                </p>
-              </div>
-              <div class="card-reveal">
-                <span class="card-title grey-text"><small>Accomplishments</small><i
-                    class="mdi-navigation-close right"></i></span>
-                <ul>
-                  <li>Designed during UofT Engineering Competition (UTEK).</li>
-                  <li>Produced full proposal, report, and presentation under time constraints.</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-
+        <!-- Load More Button -->
+        <div class="center-align" style="margin-top: 20px;">
+        <button id="load-more-btn" class="btn waves-effect waves-light blue-grey">
+            Load More Projects
+        </button>
         </div>
-      </div>
+    </div>
     </section>
 
     <!-- Fifth Section: Skills -->
@@ -902,6 +783,117 @@
       })
     })
   </script>
+
+<script>
+    // 1. Store information for at least four projects in a JavaScript array
+    const projectsData = [
+        {
+        title: "ARES-CAN Library",
+        description: "A custom CAN library written in Python and C++ enabling complex communications between science subsystems on a Mars rover.",
+        tools: "Python, C++, ROS2, CAN",
+        details: [
+            "Facilitated Raspberry Pi to Ground Station communications for the rover.",
+            "Extended to send contiguous data blocks up to 65 kB from Arduino Nano to Raspberry Pi for spectrometer pixel data.",
+            "Used to transmit data between Arduinos and an STM32G4 for internal communication prototyping."
+        ]
+        },
+        {
+        title: "CANSAT GPS Software",
+        description: "GPS and data-processing software for a miniature satellite built for the ESA CanSat 2022 international design competition.",
+        tools: "C++",
+        details: [
+            "GPS functioned to 1 meter accuracy allowing for successful payload retrieval.",
+            "Best Final Report & Canadian Rep at ESA International CanSat Design Competition."
+        ]
+        },
+        {
+        title: "Genetic Mutation Predictor",
+        description: "A machine learning model built at the Toronto Bioinformatics Hackathon that predicts potential disease-causing genetic mutations.",
+        tools: "Python, Scikit-learn",
+        details: [
+            "Combined Borzoi and Random Forest models for the machine learning component.",
+            "Found patterns relating gene sequences to female Alzheimer's patients."
+        ]
+        },
+        {
+        title: "Speech Disfluency Research",
+        description: "Reinforcement-learning-based system for adjusting medication to minimize speech disfluency, with Professor Michael Guerzhoy's team.",
+        tools: "Python, Reinforcement Learning",
+        details: [
+            "Reviewed scholarly articles and publications, contributed to data collection.",
+            "Organized research team's dataset and background information.",
+            "Co-authored resulting publication."
+        ]
+        },
+        {
+        title: "LEO Debris Laser Removal System",
+        description: "A laser removal system concept for Low Earth Orbit space junk, designed for the Ontario Engineering Competition.",
+        tools: "Engineering Consulting, Systems Design",
+        details: [
+            "Followed engineering consulting protocol; produced full proposal, report, and presentation within one day.",
+            "Best Consulting Team at UofT Engineering Competition (UTEK) and UofT Reps at OEC."
+        ]
+        },
+        {
+        title: "Vaccine Distribution System",
+        description: "A smart booking and vaccine distribution system designed to help tackle vaccine expiration and shortages in Sao Paulo, Brazil.",
+        tools: "Systems Architecture, UI Design",
+        details: [
+            "Designed during UofT Engineering Competition (UTEK).",
+            "Produced full proposal, report, and presentation under time constraints."
+        ]
+        }
+    ];
+
+    let visibleCount = 0;
+    const itemsPerLoad = 2; // Displays 2 projects at a time
+
+    // 3. Function to render project cards into the DOM
+    function renderProjects() {
+        const container = document.getElementById("projects-container");
+        const nextBatch = projectsData.slice(visibleCount, visibleCount + itemsPerLoad);
+
+        nextBatch.forEach((project) => {
+        const detailsList = project.details.map(item => `<li>${item}</li>`).join("");
+
+        const projectCardHTML = `
+            <div class="col s12 m6 l4">
+            <div class="card medium">
+                <div class="card-content">
+                <span class="card-title teal-text hoverline">${project.title}</span>
+                <p>${project.description}</p>
+                </div>
+                <div class="card-reveal">
+                <span class="card-title grey-text"><small>Accomplishments</small><i class="mdi-navigation-close right"></i></span>
+                <ul>
+                    <li><b>Tools:</b> ${project.tools}</li>
+                    ${detailsList}
+                </ul>
+                </div>
+            </div>
+            </div>
+        `;
+
+        container.insertAdjacentHTML("beforeend", projectCardHTML);
+        });
+
+        visibleCount += nextBatch.length;
+
+        // 6. Hide or disable the button after all projects have been displayed
+        const loadMoreBtn = document.getElementById("load-more-btn");
+        if (visibleCount >= projectsData.length) {
+        loadMoreBtn.style.display = "none";
+        }
+    }
+
+    // 4. Initially display two projects on page load
+    document.addEventListener("DOMContentLoaded", () => {
+        renderProjects();
+
+        // 5. Add event listener to Load More button
+        document.getElementById("load-more-btn").addEventListener("click", renderProjects);
+    });
+    </script>
 </body>
 
 </html>
